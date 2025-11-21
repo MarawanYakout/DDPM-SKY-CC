@@ -1,0 +1,38 @@
+exp_name: ddpm_skycc_H100_full
+dataset:
+  fraction: 1.0
+  data_folder: /content/drive/MyDrive/Research/skyreseach/raw_data/
+  labels_file: /content/drive/MyDrive/Research/skyreseach/raw_labels.csv
+  meta_file: /content/drive/MyDrive/Research/skyreseach/meta.csv
+  npy_images: /content/drive/MyDrive/Research/skyreseach/wind_3D16X16.npy
+  npy_labels: /content/drive/MyDrive/Research/skyreseach/wind_label_3D16X16.npy
+
+model:
+  height: 16
+  n_feat: 128        # Larger model dimension for H100
+  n_cfeat: 5
+
+train:
+  batch_size: 128    # Max out GPU RAM
+  epochs: 100        # Adjust for your research needs
+  lr: 1e-4
+  save_every: 5
+  save_dir: /content/drive/MyDrive/Research/skyreseach/checkpoints_H100/
+
+diffusion:
+  timesteps: 500
+  beta1: 1e-4
+  beta2: 0.02
+
+wandb:
+  enabled: true
+  project: DDPM-SKYCC
+  group: h100_full
+  name: ddpm-H100-full
+
+tune:
+  sweep: false
+  grid:
+    batch_size: [64, 128, 256]
+    lr: [1e-4, 5e-4]
+    n_feat: [64, 128]

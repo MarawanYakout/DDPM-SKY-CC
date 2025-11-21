@@ -57,7 +57,7 @@ def create_wind_speed_dict(folder_path, labels_df):
     Returns:
         wind_speeds: Dictionary {image_id: wind_speed}
     """
-    folder_path_image = os.path.join(folder_path, "augmented/")
+    folder_path_image = os.path.join(folder_path, "train")
     
     # Get image filenames
     image_filenames = [
@@ -238,10 +238,10 @@ def prepare_wind_speed_dataset(
     labels, metadata = load_metadata(folder_path)
     
     # Generate AugMix images if requested
-    if generate_augmix:
+    if generate_augmix_data:
         augmented_folder = generate_augmix_images(folder_path, labels)
     else:
-        augmented_folder = os.path.join(folder_path, "augmented/")
+        augmented_folder = os.path.join(folder_path, "train")
 
     
     # Create wind speed dictionary

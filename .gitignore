@@ -1,3 +1,6 @@
-sprite_labels_nc_1788_16x16.npy
-sprites_1788_16x16.npy
-/weights/
+wind_3D16X16.npy
+wind_label_3D16X16.npy
+/wandb/
+notebooks
+ipynb_checkpoints
+/checkpoints/
